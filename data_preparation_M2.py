@@ -13,3 +13,21 @@ def download_answer_files(cloud_url:str, path_to_data_folder:str, total_responde
             with open(target_path, "w", encoding="utf-8") as f:
                 f.write(my_file.text)
     
+def collate_answer_files(data_folder_path:str):
+    files = os.listdir(data_folder_path)
+    files.sort(key=lambda x: int(x.split("_")[-1].split(".")[0]))
+
+    output_folder=f"{data_folder_path}_collated"
+    os.makedirs(output_folder, exist_ok=True)
+    output_path = os.path.join(output_folder, "collated_answers.txt")
+
+    with open(output_path, "w", encoding="utf-8") as f:
+       for filename in files:
+          full_path = os.path.join(data_folder_path, filename)
+          with open(full_path, "r", encoding="utf-8") as g:
+              text = g.read()
+              f.write(text)
+              f.write("\n*\n")
+
+
+collate_answer_files('moc_data')
