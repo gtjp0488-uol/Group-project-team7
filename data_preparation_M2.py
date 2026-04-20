@@ -14,4 +14,3 @@ def download_answer_files(cloud_url:str, path_to_data_folder:str, total_responde
          with open(target_path, "w", encoding="utf-8") as f:
              f.write(my_file.text)
     
-download_answer_files("https://raw.githubusercontent.com/fc-leeds/MATH1604_2025_2026_data/main","data",70)
