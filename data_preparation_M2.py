@@ -7,10 +7,9 @@ def download_answer_files(cloud_url:str, path_to_data_folder:str, total_responde
          source_url = f"{cloud_url}/{source_filename}"
 
          my_file = requests.get(source_url)
-         my_file.raise_for_status()
-         target_filename = f"answers_respondent_{i}.txt"
-         target_path = os.path.join(path_to_data_folder, target_filename)
-
-         with open(target_path, "w", encoding="utf-8") as f:
-             f.write(my_file.text)
+         if my_file.status_code == 200:
+            target_filename = f"answers_respondent_{i}.txt"
+            target_path = os.path.join(path_to_data_folder, target_filename)
+            with open(target_path, "w", encoding="utf-8") as f:
+                f.write(my_file.text)
     
