@@ -29,5 +29,3 @@ def collate_answer_files(data_folder_path:str):
               f.write(text)
               f.write("\n*\n")
 
-
-collate_answer_files('moc_data')
