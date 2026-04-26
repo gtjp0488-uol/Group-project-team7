@@ -30,3 +30,9 @@ def write_answers_sequence(answers, n, destination_path):
     with open(filename, 'w') as file:
         for answer in answers:
             file.write(str(answer) + "\n")
+def write_answers_sequence(answers, n, destination_path):
+    filename = f"{destination_path}/answers_list_respondent_{n}.txt"
+
+    with open(filename, 'w') as file:
+        for answer in answers:
+            file.write(str(answer) + "\n")
